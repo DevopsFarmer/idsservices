@@ -1,30 +1,36 @@
 type SupportSectionProps = {
-    image: string
-    title: string
-    description: string
-    reverse?: boolean
-  }
+  image: string
+  title: string
+  description: string
+  reverse?: boolean
+}
 
-  const SupportSection = ({ image, title, description, reverse = false }: SupportSectionProps) => {
+const SupportSection = ({ image, title, description, reverse = false }: SupportSectionProps) => {
   return (
-    <div className={`mx-auto flex flex-col md:flex-row items-center gap-10 py-12`}>
-
+    <div className={`mx-auto flex flex-col p-18 md:flex-row items-center gap-10 py-12`}>
       {!reverse && (
         <div className="w-full md:w-1/2">
           <img
             src={image}
             alt="Support"
-            className="rounded-tl-[100px] rounded-br-[100px] object-cover w-full h-auto"
+            className="rounded-tl-[200px] rounded-br-[200px] object-cover w-full p-10 h-auto"
           />
         </div>
       )}
 
-      <div className="w-full md:w-1/2 text-center md:text-left">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-gray-800 mb-4">{title}</h2>
-        <p className="text-gray-600 text-base leading-relaxed mb-6">{description}</p>
-        <button className="border border-pink-400 text-pink-500 px-6 py-2 rounded-full font-medium hover:bg-pink-50 transition-all duration-200">
-          FIND OUT MORE <span className="ml-2">➤</span>
-        </button>
+      <div className="flex items-center justify-center w-1/2">
+        <div className="w-full text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-center font-serif text-gray-800 mb-4">
+            {title}
+          </h2>
+          <p className="text-gray-600 text-xl text-center leading-relaxed mb-6">{description}</p>
+
+          <div className="flex items-center justify-center">
+            <button className="border border-pink-400 text-pink-500 px-6 py-2 rounded-xl font-medium hover:bg-pink-50 transition-all duration-200">
+              FIND OUT MORE <span className="ml-2">➤</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       {reverse && (
@@ -32,7 +38,7 @@ type SupportSectionProps = {
           <img
             src={image}
             alt="Support"
-            className="rounded-tl-[100px] rounded-br-[100px] object-cover w-full h-auto"
+            className="rounded-tl-[200px] rounded-br-[200px] object-cover p-10 w-full h-auto"
           />
         </div>
       )}
@@ -43,8 +49,8 @@ type SupportSectionProps = {
 const Card = () => {
   return (
     <>
-      <div className="bg-white max-w-6xl px-20 mx-auto">
-        <h2 className="text-center text-4xl sm:text-4xl font-medium text-gray-700 mt-12">
+      <div className="bg-white max-w-7xl px-20 mx-auto">
+        <h2 className="text-center text-4xl sm:text-6xl font-medium text-gray-700 mt-12">
           Someone by <span className="text-pink-500 font-handwritten">your</span> side
         </h2>
         <SupportSection
