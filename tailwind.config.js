@@ -53,6 +53,7 @@ const config = {
         sans: ['var(--font-geist-sans)'],
         thinker: ['"Thinker Justice"'],
         handwriting: ['"Pacifico"', 'cursive'],
+        signature: ['"Great Vibes"', 'cursive'],
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',

@@ -2,13 +2,13 @@
     return (
       <>
         <div
-          className="mt-60 h-[470px] bg-[rgb(66,73,79)] bg-cover bg-top bg-no-repeat  "
+          className="mt-60 md:h-[470px] bg-[rgb(66,73,79)] bg-cover bg-top bg-no-repeat  "
           style={{
             backgroundImage:
               "url('https://idsservices.com.au/wp-content/uploads/2023/08/aboriginal-art_2.png')",
           }}
         >
-          <div className="max-w-5xl mx-auto bg-white -top-40 rounded-2xl shadow-md p-10 relative">
+          <div className="max-w-5xl md:mx-auto mx-10 bg-white -top-40 rounded-2xl shadow-md p-10 relative">
             {/* Butterfly Image */}
             <div className="absolute -top-20 left-1/2 transform -translate-x-1/2">
               <img src="/image1.png" alt="Butterfly" className="w-40" />
@@ -18,13 +18,8 @@
             <h2 className="text-center text-2xl sm:text-5xl font-medium text-gray-700 mt-12">
               Our guiding{" "}
               <span
-                style={{
-                  color: "#F389A5",
-                  fontFamily: "Thinker Justice",
-                  fontSize: "90px",
-                  lineHeight: "90px",
-                }}
-                className="font-handwritten"
+            
+                className="font-signature text-8xl text-[#F389A5] "
               >
                 principles
               </span>
@@ -39,21 +34,21 @@
             {/* 3 Principles */}
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
               <div>
-                <h3 className="text-5xl text-orange-500 font-handwritten">1.</h3>
+                <h3 className="text-5xl text-orange-500 font-signature">1.</h3>
                 <h4 className="mt-2 text-lg font-semibold tracking-wider text-gray-800">CHOICE</h4>
                 <p className="mt-2 text-gray-600 text-sm">
                   Giving you back the freedom in your choices and enabling self-empowerment.
                 </p>
               </div>
               <div>
-                <h3 className="text-5xl text-orange-500 font-handwritten">2.</h3>
+                <h3 className="text-5xl text-orange-500 font-signature">2.</h3>
                 <h4 className="mt-2 text-lg font-semibold tracking-wider text-gray-800">INCLUSION</h4>
                 <p className="mt-2 text-gray-600 text-sm">
                   Supporting self-sufficiency and integration into everyday activities.
                 </p>
               </div>
               <div>
-                <h3 className="text-5xl text-orange-500 font-handwritten">3.</h3>
+                <h3 className="text-5xl text-orange-500 font-signature">3.</h3>
                 <h4 className="mt-2 text-lg font-semibold tracking-wider text-gray-800">RESPECT</h4>
                 <p className="mt-2 text-gray-600 text-sm">
                   Respecting the dignity and ongoing confidentiality of every individual.
