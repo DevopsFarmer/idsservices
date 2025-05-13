@@ -13,29 +13,59 @@ const Form = () => {
   const [servicesRequired, setServicesRequired] = useState('')
   const [message, setMessage] = useState('')
 
+
+
+  
   const supabase = createClient(
     'https://xyrvbmeprktnueoiqcxr.supabase.co',
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5cnZibWVwcmt0bnVlb2lxY3hyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcwNDk1NjUsImV4cCI6MjA2MjYyNTU2NX0.rzxCMQ36DgzvY2C8JXkhajesgG-6mH1kJ9Q5a-B5wy0',
   )
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
+ 
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-
+  
+    // Check if the email already exists
+    const { data: existingData, error: fetchError } = await supabase
+      .from('lilycare')
+      .select('*')
+      .eq('email', email)
+  
+    if (fetchError) {
+      console.error('Error checking email:', fetchError)
+      alert('Something went wrong. Please try again.')
+      return
+    }
+  
+    if (existingData && existingData.length > 0) {
+      alert('This email has already been used to submit the form.')
+      return
+    }
+  
+    // Insert new entry
     const { data, error } = await supabase.from('lilycare').insert([
       {
         first_name: firstName,
         last_name: lastName,
-        email: email,
+        email,
         contact: preferredContact,
         services: servicesRequired,
-        message: message,
+        message,
       },
     ])
-
+  
     if (error) {
       console.error('Error inserting data:', error)
+      alert('Something went wrong, please try again.')
     } else {
       console.log('Data inserted successfully:', data)
+      setSuccess(true)
+      setFirstName('')
+      setLastName('')
+      setEmail('')
+      setPreferredContact('')
+      setServicesRequired('')
+      setMessage('')
     }
   }
 
@@ -202,3 +232,7 @@ const Form = () => {
 }
 
 export default Form
+function setSuccess(arg0: boolean) {
+  throw new Error('Function not implemented.')
+}
+
