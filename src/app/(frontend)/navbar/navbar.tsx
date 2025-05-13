@@ -1,23 +1,36 @@
 // Navbar.jsx
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { FaPhoneAlt, FaMobileAlt, FaFacebookF, FaInstagram } from 'react-icons/fa'
-
+import { FiMenu, FiX } from 'react-icons/fi'
+import { motion, AnimatePresence } from 'framer-motion'
+import { RiArrowDropUpLine } from 'react-icons/ri'
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [timeoutId, setTimeoutId] = useState<number | null>(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
   return (
     <>
-      <div className="relative w-full font-Arial">
+      <div className="relative  w-full font-Arial">
         {/* Navbar (example) */}
         <header className="w-full">
           {/* Top Contact Bar */}
-          <div className="w-full flex items-center justify-between px-40 pt-4 bg-white">
+          <div className="w-full flex items-center justify-between md:px-40 pt-4 bg-white">
             {/* Left - Contact Buttons */}
             <div className="flex space-x-4">
-              <div className="flex items-center space-x-4 bg-orange-400 text-white px-8 py-2 rounded-t-xl text-xl">
+              <div className="md:flex items-center hidden space-x-4 bg-orange-400 text-white px-8 py-2 rounded-t-xl text-xl">
                 <FaMobileAlt />
                 <span>0414 849 637</span>
               </div>
-              <div className="flex items-center space-x-4 bg-emerald-400 text-white  py-2 px-8  rounded-t-xl text-xl">
+              <div className="md:flex items-center hidden space-x-4 bg-emerald-400 text-white  py-2 px-8  rounded-t-xl text-xl">
+                <div className=" rotate-180">
+                  <FaPhoneAlt className=" rotate-90" />
+                </div>
+                <span>1300 468 428</span>
+              </div>
+              <div className="flex md:hidden items-center  bg-emerald-400 text-white   py-2 px-8   rounded-t-xl text-xl">
                 <div className=" rotate-180">
                   <FaPhoneAlt className=" rotate-90" />
                 </div>
@@ -26,8 +39,8 @@ const Navbar = () => {
             </div>
 
             {/* Right - NDIS + Social */}
-            <div className="flex items-center pb-3 space-x-4">
-              <div className="flex items-center  space-x-2 pr-10">
+            <div className="flex items-center pr-10 md:pr-0 pb-3 md:space-x-4 space-x-8">
+              <div className="md:flex hidden items-center  space-x-2 pr-10">
                 <img src="/idis.png" alt="NDIS" className="h-8  w-auto" />
               </div>
 
@@ -45,49 +58,182 @@ const Navbar = () => {
             <div className="max-w-6xl mx-auto px-4 pt-4 flex items-center justify-between">
               {/* Logo */}
               <div className="flex items-center space-x-2">
-                <img src="/image.png" alt="Invictus Logo" className="h-20" />
+                <img src="/logo.svg" alt="Invictus Logo" className="h-24" />
               </div>
 
               {/* Nav Items */}
-              <ul className="flex space-x-14 text-xl font-Arial">
+              <ul className="hidden md:flex space-x-14 text-xl font-Arial">
                 <Link href="/">
                   <li className="hover:text-yellow-300 cursor-pointer">HOME</li>
                 </Link>
                 <Link href="/about">
-                  {' '}
                   <li className="hover:text-yellow-300 cursor-pointer">ABOUT</li>
                 </Link>
-                <li className="relative group cursor-pointer">
-                  <span className="hover:text-yellow-300">SERVICES</span>
-                  {/* Dropdown */}
-                  <ul className="absolute hidden group-hover:block bg-white text-black mt-1 shadow-md rounded-md p-2">
-                    <li className="px-4 py-1 hover:bg-gray-100">
-                      Support Coordination & In Home Support
-                    </li>
-                    <li className="px-4 py-1 hover:bg-gray-100">
-                      Community Participation & Skills Development
-                    </li>
-                  </ul>
+                <li
+                  className="relative group cursor-pointer"
+                  onMouseEnter={() => {
+                    if (timeoutId !== null) {
+                      clearTimeout(timeoutId)
+                    }
+                    setIsOpen(true)
+                  }}
+                  onMouseLeave={() => {
+                    const id = setTimeout(() => setIsOpen(false), 200) as unknown as number
+                    setTimeoutId(id)
+                  }}
+                >
+                  <div className="hover:text-yellow-300 flex items-center space-x-1">
+                    <Link href="/services">
+                      {' '}
+                      <span>SERVICES</span>
+                    </Link>
+                    <RiArrowDropUpLine className="rotate-180 w-8 h-8" />
+                  </div>
+
+                  {isOpen && (
+                    <div className="absolute left-0 text-sm mt-2 w-96 bg-[rgb(66,73,79)] text-white shadow-lg rounded-md space-y-1 py-2 z-10">
+                      <ul>
+                        <Link href="/services/support-coordination-in-home-support-ndis-services-idss">
+                          <li className="px-6 py-3 border-b border-gray-800 hover:bg-gray-700 cursor-pointer">
+                            Support Coordination & In Home Support
+                          </li>
+                        </Link>
+                        <Link href="/services/community-participation-skills-development">
+                          <li className="px-6 py-3 border-b border-gray-800 hover:bg-gray-700 cursor-pointer">
+                            Community Participation & Skills Development
+                          </li>
+                        </Link>
+                        <Link href="/services/respite-accommodationsil-invictus-disability-support-services">
+                          <li className="px-6 py-3 border-b border-gray-800 hover:bg-gray-700 cursor-pointer">
+                            Respite, Accommodation & Supported Independent Living
+                          </li>
+                        </Link>
+                        <Link href="/services/aged-care">
+                          <li className="px-6 py-3 hover:bg-gray-700 cursor-pointer">Aged Care</li>
+                        </Link>
+                      </ul>
+                    </div>
+                  )}
                 </li>
+
                 <Link href="/contact">
                   <li className="hover:text-yellow-300 cursor-pointer">CONTACT</li>
                 </Link>
               </ul>
 
               {/* Right Side */}
-              <div className="flex items-center  space-x-4">
+              <div className="hidden md:flex items-center  space-x-4">
                 <button className="border border-yellow-400 text-yellow-400 text-xl px-6 py-2 rounded-xl hover:bg-yellow-500 hover:text-white transition">
                   ENQUIRE NOW
                 </button>
               </div>
+
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden text-white text-2xl"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <FiX /> : <FiMenu />}
+              </button>
             </div>
+            {/* AnimatePresence wraps conditional rendering */}
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div
+                  className="md:hidden w-full text-white flex flex-col items-center py-4 space-y-4 shadow-md"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Link
+                    href="/"
+                    className=" font-bold text-lg"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    HOME
+                  </Link>
+                  <Link
+                    href="/about"
+                    className=" font-bold text-lg"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    ABOUT
+                  </Link>
+                  <div className="relative inline-block text-left">
+                    {/* Toggle Button */}
+                    <button className="flex items-center justify-between font-bold text-lg space-x-2">
+                      <Link href="/services">
+                        {' '}
+                        <span>SERVICES</span>
+                      </Link>
+                      <RiArrowDropUpLine
+                        className={`text-3xl transition-transform duration-300 ${
+                          isServicesOpen ? 'rotate-180' : ''
+                        }`}
+                        onClick={() => setIsServicesOpen(!isServicesOpen)}
+                      />
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    <AnimatePresence>
+                      {isServicesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          className="absolute mt-2 w-72 bg-[#F9F7E9] shadow-xl z-50 rounded-md"
+                        >
+                          {[
+                            {
+                              label: 'Support Coordination & In Home Support',
+                              navlink:
+                                '/services/support-coordination-in-home-support-ndis-services-idss',
+                            },
+                            {
+                              label: 'Community Participation & Skills Development',
+                              navlink: '/services/community-participation-skills-development',
+                            },
+                            {
+                              label: 'Respite, Accommodation & Supported Independent Living',
+                              navlink:
+                                '/services/respite-accommodationsil-invictus-disability-support-services',
+                            },
+                            {
+                              label: 'Aged-Care',
+                              navlink: '/services/aged-care',
+                            },
+                          ].map((service, index) => (
+                            <Link
+                              key={index}
+                              href={service.navlink}
+                              className="block px-4 py-2 text-black text-sm hover:bg-[#FF8239] transition-all"
+                              onClick={() => {
+                                setIsServicesOpen(false)
+                                setIsMenuOpen(false)
+                              }}
+                            >
+                              {service.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className=" font-bold text-lg"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    CONTACT US
+                  </Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </nav>
         </header>
-
-   
       </div>
-
-      
     </>
   )
 }

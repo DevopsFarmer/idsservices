@@ -9,16 +9,24 @@ const SupportSection = ({ image, title, description, reverse = false }: SupportS
   return (
     <div className={`mx-auto flex flex-col p-18 md:flex-row items-center gap-10 py-12`}>
       {!reverse && (
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:block hidden md:w-1/2">
           <img
             src={image}
             alt="Support"
-            className="rounded-tl-[200px] rounded-br-[200px] object-cover w-full p-10 h-auto"
+            className="md:rounded-tl-[200px] md:rounded-br-[200px] rounded-tl-[100px] rounded-br-[100px] object-cover w-full p-10 h-auto"
           />
         </div>
       )}
 
-      <div className="flex items-center justify-center w-1/2">
+<div className="w-full md:hidden">
+          <img
+            src={image}
+            alt="Support"
+            className="md:rounded-tl-[200px] md:rounded-br-[200px] rounded-tl-[100px] rounded-br-[100px] object-cover w-full p-10 h-auto"
+          />
+        </div>
+
+      <div className="flex items-center justify-center md:px-0 px-8 md:w-1/2">
         <div className="w-full text-center md:text-left">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-center font-serif text-gray-800 mb-4">
             {title}
@@ -34,7 +42,7 @@ const SupportSection = ({ image, title, description, reverse = false }: SupportS
       </div>
 
       {reverse && (
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:block hidden md:w-1/2">
           <img
             src={image}
             alt="Support"
@@ -49,9 +57,9 @@ const SupportSection = ({ image, title, description, reverse = false }: SupportS
 const Card = () => {
   return (
     <>
-      <div className="bg-white max-w-7xl px-20 mx-auto">
-        <h2 className="text-center text-4xl sm:text-6xl font-medium text-gray-700 mt-12">
-          Someone by <span className="text-pink-500 font-handwritten">your</span> side
+      <div className="bg-white max-w-7xl md:px-20 mx-auto">
+        <h2 className="text-center text-4xl md:text-4xl  font-medium text-gray-700 mt-12">
+          Someone by <span className="text-pink-500 font-signature">your</span> side
         </h2>
         <SupportSection
           image="/image2.png"
