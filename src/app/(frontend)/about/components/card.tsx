@@ -1,10 +1,12 @@
 import React from 'react';
 import { TbCertificate } from "react-icons/tb";
+import { FaFileAlt, FaComments } from 'react-icons/fa';
+import Link from 'next/link';
 const Card = () => {
   return (
     <>
 
-<div className="bg-[rgb(66,73,79)] py-16">
+<div className="bg-[rgb(66,73,79)] pt-16">
   <div className="bg-white mx-8  max-w-6xl md:mx-auto -top-40 rounded-xl relative shadow-md px-6 py-12 text-center">
     <h2 className="text-4xl font-light mb-4">
       <span className="text-pink-400 font-handwriting text-5xl">Why</span>
@@ -57,9 +59,22 @@ const Card = () => {
         </p>
       </div>
     </div>
-  </div>
-</div>
 
+
+  </div>
+  <div className="flex flex-col md:flex-row items-center justify-center gap-4   pb-24">
+      <button className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-xl border border-white transition">
+        <FaFileAlt className="text-white" />
+        <span className="tracking-widest uppercase text-sm">Complete Our Referral Form</span>
+      </button>
+      <Link href='/contact'>
+      <button className="flex items-center gap-2 bg-pink-400 hover:bg-pink-500 text-white font-semibold py-3 px-6 rounded-xl border border-white transition">
+        <FaComments className="text-white" />
+        <span className="tracking-widest uppercase text-sm">Make an Initial Enquiry</span>
+      </button>
+      </Link>
+    </div>
+</div>
 
 
 

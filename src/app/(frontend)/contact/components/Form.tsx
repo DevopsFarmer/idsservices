@@ -12,7 +12,7 @@ const Form = () => {
   const [preferredContact, setPreferredContact] = useState('')
   const [servicesRequired, setServicesRequired] = useState('')
   const [message, setMessage] = useState('')
-
+  const [phone, setPhone] = useState('')
 
 
   
@@ -48,9 +48,10 @@ const Form = () => {
         first_name: firstName,
         last_name: lastName,
         email,
-        contact: preferredContact,
+        preferredContact,
         services: servicesRequired,
         message,
+        phone,
       },
     ])
   
@@ -129,7 +130,7 @@ const Form = () => {
           </div>
 
           {/* Contact Form Column */}
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-6" onSubmit={handleSubmit} action="https://formsubmit.co/your@email.com" method="POST">
             <h2 className="text-xl font-light text-gray-700 uppercase tracking-widest text-center">
               Get in touch to discuss your personalised needs today.
             </h2>
@@ -163,19 +164,28 @@ const Form = () => {
 
               <input
                 type="text"
-                placeholder="Preferred Contact"
-                value={preferredContact}
-                onChange={(e) => setPreferredContact(e.target.value)}
+                placeholder="Phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
             </div>
+     
+            <label className="block text-gray-700 ">Preferred Contact</label>
+            <select value={preferredContact} 
+              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
+               onChange={(e) => setPreferredContact(e.target.value)} >
+              <option>Phone</option>
+              <option>Email</option>
+            </select>
+       
             <input
               type="text"
               placeholder="Services Required"
               value={servicesRequired}
               onChange={(e) => setServicesRequired(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
-            />
+            /> 
 
             <textarea
               rows={4}
@@ -186,10 +196,10 @@ const Form = () => {
             />
 
             {/* Simulated reCAPTCHA placeholder */}
-            <div className="bg-white border border-gray-300 rounded p-4 shadow flex items-center space-x-3">
+            {/* <div className="bg-white border border-gray-300 rounded p-4 shadow flex items-center space-x-3">
               <input type="checkbox" />
               <span className="text-sm">I’m not a robot</span>
-            </div>
+            </div> */}
 
             <button
               type="submit"
@@ -208,7 +218,7 @@ const Form = () => {
       />
       <div className="bg-[rgb(66,73,79)] relative pb-40 py-16">
         <div className="flex justify-center items-center pt-12">
-          <button className="flex items-center gap-2 bg-orange-500  text-white text-lg px-6 py-4 rounded-lg shadow-md hover:bg-orange-600 transition">
+          <button className="flex items-center gap-2 bg-orange-500 border   text-white text-lg px-6 py-4 rounded-xl  shadow-md hover:bg-orange-600 transition">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"

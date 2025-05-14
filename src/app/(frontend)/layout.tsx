@@ -1,21 +1,24 @@
+// app/layout.tsx or app/layout.js
 import React from 'react'
 import Navbar from './navbar/navbar'
 import Footer from './footer/footer'
 import './globals.css'
+
 export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  title: 'Lily Care',
+  description: '',
 }
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/LilyCare1.svg" type="image/svg+xml" />
+      </head>
       <body>
-        <Navbar/>
+        <Navbar />
         <main>{children}</main>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   )

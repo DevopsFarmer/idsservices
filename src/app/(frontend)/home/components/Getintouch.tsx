@@ -1,4 +1,82 @@
+'use client'
+import { createClient } from '@supabase/supabase-js'
+import React, { useState } from 'react'
+import { FaMapMarkedAlt } from 'react-icons/fa'
+import { IoCall } from 'react-icons/io5'
+import { MdOutlineMail } from 'react-icons/md'
+import { MdOutlineWatchLater } from 'react-icons/md'
+
 const GetInTouch = () => {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [preferredContact, setPreferredContact] = useState('')
+  const [servicesRequired, setServicesRequired] = useState('')
+  const [message, setMessage] = useState('')
+  const [phone, setPhone] = useState('')
+  const [success, setSuccess] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const supabase = createClient(
+    'https://xyrvbmeprktnueoiqcxr.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5cnZibWVwcmt0bnVlb2lxY3hyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcwNDk1NjUsImV4cCI6MjA2MjYyNTU2NX0.rzxCMQ36DgzvY2C8JXkhajesgG-6mH1kJ9Q5a-B5wy0',
+  )
+
+ 
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
+    if (isSubmitting) return
+    setIsSubmitting(true)
+
+    setIsSubmitting(false)
+    // Check if the email already exists
+    const { data: existingData, error: fetchError } = await supabase
+      .from('lilycare')
+      .select('*')
+      .eq('email', email)
+  
+    if (fetchError) {
+      console.error('Error checking email:', fetchError)
+      alert('Something went wrong. Please try again.')
+      return
+    }
+  
+    if (existingData && existingData.length > 0) {
+      alert('This email has already been used to submit the form.')
+      return
+    }
+  
+    // Insert new entry
+    const { data, error } = await supabase.from('lilycare').insert([
+      {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        preferredContact,
+        services: servicesRequired,
+        message,
+        phone,
+      },
+    ])
+  
+    if (error) {
+      console.error('Error inserting data:', error)
+      alert('Something went wrong, please try again.')
+    } else {
+      console.log('Data inserted successfully:', data)
+      setSuccess(true)
+      setFirstName('')
+      setLastName('')
+      setEmail('')
+      setPreferredContact('')
+      setServicesRequired('')
+      setMessage('')
+      setPhone('')
+    }
+  }
+
+
+
+
   return (
     <>
  
@@ -16,7 +94,7 @@ const GetInTouch = () => {
     
 
 <div
-  className="h-[1000px] bg-no-repeat bg-[#42494fe1] bg-bottom bg-cover overflow-hidden"
+  className="h-[700px] bg-no-repeat bg-[#42494fe1] bg-bottom bg-cover overflow-hidden"
   style={{
     backgroundImage:
       "url('https://idsservices.com.au/wp-content/uploads/2023/08/aboriginal-art.png')",
@@ -30,30 +108,30 @@ const GetInTouch = () => {
       <h2 className="text-3xl sm:text-4xl font-serif font-semibold mb-4">
         Get in <span className="text-yellow-400 text-7xl font-signature">touch</span>
       </h2>
-      <p className="text-base sm:text-lg leading-relaxed">
+      <p className="text-base sm:text-lg leading-relaxed ">
         Get in touch with us to discuss your NDIS support needs and to chat about how we can assist in your long-term care plan.
       </p>
     </div>
 
     {/* Form */}
     <div className="md:w-1/2 w-full p-4 rounded">
-      <form className="space-y-5">
+      <form className="space-y-5" onSubmit={handleSubmit}>
         <div>
           <label className="block text-white mb-1">Name</label>
-          <input type="text" className="w-full px-4 py-2 rounded bg-gray-100 focus:outline-none" />
+          <input type="text" value={firstName}   onChange={(e) => setFirstName(e.target.value)} className="w-full px-4 py-2 rounded bg-gray-100 focus:outline-none" />
         </div>
         <div>
           <label className="block text-white mb-1">Email</label>
-          <input type="email" className="w-full px-4 py-2 rounded bg-gray-100 focus:outline-none" />
+          <input type="email"    value={email}   onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-2 rounded bg-gray-100 focus:outline-none" />
         </div>
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="w-full">
-            <label className="block text-white mb-1">Phone</label>
-            <input type="tel" className="w-full px-4 py-2 rounded bg-gray-100 focus:outline-none" />
+            <label  className="block text-white mb-1">Phone</label>
+            <input type="tel" value={phone}   onChange={(e) => setPhone(e.target.value)} className="w-full px-4 py-2 rounded bg-gray-100 focus:outline-none" />
           </div>
           <div className="w-full">
             <label className="block text-white mb-1">Preferred Contact</label>
-            <select className="w-full px-4 py-2 rounded bg-gray-100 focus:outline-none">
+            <select value={preferredContact}   onChange={(e) => setPreferredContact(e.target.value)} className="w-full px-4 py-2 rounded bg-gray-100 focus:outline-none">
               <option>Phone</option>
               <option>Email</option>
             </select>
@@ -61,13 +139,13 @@ const GetInTouch = () => {
         </div>
         <div>
           <label className="block text-white mb-1">Message</label>
-          <textarea rows={4} className="w-full px-4 py-2 rounded bg-gray-100 focus:outline-none"></textarea>
+          <textarea rows={4} value={message}   onChange={(e) => setMessage(e.target.value)} className="w-full px-4 py-2 rounded bg-gray-100 focus:outline-none"></textarea>
         </div>
-        <div className="bg-black p-4 rounded">
+        {/* <div className="bg-black p-4 rounded">
           <p className="text-white">[reCAPTCHA widget here]</p>
-        </div>
-        <button type="submit" className="bg-orange-400 hover:bg-orange-500 text-white px-6 py-2 rounded font-medium transition-all">
-          Submit
+        </div> */}
+        <button disabled={isSubmitting} type="submit" className="bg-orange-400 hover:bg-orange-500 text-white px-6 py-2 rounded font-medium transition-all">
+        {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
       </form>
     </div>
@@ -82,3 +160,7 @@ const GetInTouch = () => {
 }
 
 export default GetInTouch
+function setSuccess(arg0: boolean) {
+  throw new Error('Function not implemented.')
+}
+

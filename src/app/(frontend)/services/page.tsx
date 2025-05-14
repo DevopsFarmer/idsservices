@@ -1,18 +1,12 @@
-import { headers as getHeaders } from 'next/headers.js'
-import { getPayload } from 'payload'
+
 import React from 'react'
-import { fileURLToPath } from 'url'
+
 import HeroSection from './components/herosection'
 import SupportSection from './components/card'
-import config from '@/payload.config'
+
+import Link from 'next/link'
 
 export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
-
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
 
   return (
     <>
@@ -42,23 +36,25 @@ export default async function HomePage() {
             </svg>
             COMPLETE OUR REFERRAL FORM
           </button>
-          <button className="flex items-center gap-2 bg-orange-500  text-white text-lg px-6 py-4 rounded-lg shadow-md hover:bg-orange-600 transition">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 12h6m2 0a2 2 0 100-4H7a2 2 0 100 4m12 0v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6m16 0H5"
-              />
-            </svg>
-            MAKE AN INITIAL ENQUIRY
-          </button>
+         
+            <button className="flex items-center gap-2 bg-orange-500  text-white text-lg px-6 py-4 rounded-lg shadow-md hover:bg-orange-600 transition">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12h6m2 0a2 2 0 100-4H7a2 2 0 100 4m12 0v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6m16 0H5"
+                />
+              </svg>
+              <Link href="/contact"> MAKE AN INITIAL ENQUIRY </Link>
+            </button>
+          
         </div>
       </div>
     </>

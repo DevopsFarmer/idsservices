@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 const InHomeSupport = () => {
   return (
     <>
@@ -47,6 +49,10 @@ const InHomeSupport = () => {
                 </li>
               ))}
             </ul>
+            <Link href='https://www.myagedcare.gov.au/help-at-home/home-care-packages'>
+            <button className="border bg-white mt-10 border-pink-400 text-pink-500 px-6 py-2 rounded-xl font-medium hover:bg-pink-50 transition-all duration-200">
+              FIND OUT MORE <span className="ml-2">➤</span>
+            </button></Link>
           </div>
 
           {/* Right - Image */}
