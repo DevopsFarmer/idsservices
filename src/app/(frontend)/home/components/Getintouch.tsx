@@ -94,7 +94,7 @@ const GetInTouch = () => {
     
 
 <div
-  className="h-[700px] bg-no-repeat bg-[#42494fe1] bg-bottom bg-cover overflow-hidden"
+  className="md:h-[700px] bg-no-repeat bg-[#42494fe1] bg-bottom bg-cover overflow-hidden"
   style={{
     backgroundImage:
       "url('https://idsservices.com.au/wp-content/uploads/2023/08/aboriginal-art.png')",
