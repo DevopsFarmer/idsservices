@@ -11,7 +11,7 @@ const GuidingPrinciples = () => {
         <div className="max-w-5xl md:mx-auto mx-10 bg-white -top-40 rounded-2xl shadow-md p-10 relative">
           {/* LilyCare Image */}
           <div className="absolute -top-20 left-1/2 transform -translate-x-1/2">
-            <img src="/LilyCare1.svg" alt="LilyCare" className="w-[700px]" />
+            <img src="/LilyCare1.svg" alt="LilyCare" className="  md:w-[700px]" />
           </div>
 
           {/* Heading */}

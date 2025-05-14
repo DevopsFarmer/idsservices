@@ -61,7 +61,7 @@ const SupportSection = ({ image, title, description,link, reverse = false }: Sup
 const Card = () => {
   return (
     <>
-      <div className="bg-white max-w-7xl md:px-20 mx-auto">
+      <div className="bg-white pb-10 max-w-7xl md:px-20 mx-auto">
         <h2 className="text-center text-4xl md:text-6xl  font-medium text-gray-700 mt-12">
           Someone by <span className="text-pink-500 font-signature">your</span> side
         </h2>

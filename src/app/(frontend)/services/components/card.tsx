@@ -1,41 +1,56 @@
 import Link from "next/link"
+
 type SupportSectionProps = {
-    image: string
-    title: string
-    description: string
-    reverse?: boolean
-    link: string
-  }
+  image: string
+  title: string
+  description: string
+  reverse?: boolean
+  link: string
+}
 
-  const SupportSection = ({ image, title, description,link, reverse = false }: SupportSectionProps) => {
+const SupportSection = ({ image, title, description,link, reverse = false }: SupportSectionProps) => {
   return (
-    <div className={`mx-auto flex flex-col md:flex-row items-center gap-10 py-12`}>
-
+    <div className={`mx-auto flex flex-col p-18 md:flex-row items-center gap-10 py-12`}>
       {!reverse && (
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:block hidden md:w-1/2">
           <img
             src={image}
             alt="Support"
-            className="rounded-tl-[100px] rounded-br-[100px] object-cover w-full h-auto"
+            className="md:rounded-tl-[200px] md:rounded-br-[200px] rounded-tl-[100px] rounded-br-[100px] object-cover w-full p-10 h-auto"
           />
         </div>
       )}
 
-      <div className="w-full md:w-1/2 text-center md:text-left">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-gray-800 mb-4">{title}</h2>
-        <p className="text-gray-600 text-base leading-relaxed mb-6">{description}</p>
-        <Link href={link}>
-            <button className="border border-pink-400 text-pink-500 px-6 py-2 rounded-xl font-medium hover:bg-pink-50 transition-all duration-200">
-              FIND OUT MORE <span className="ml-2">➤</span>
-            </button></Link>
-      </div>
-
-      {reverse && (
-        <div className="w-full md:w-1/2">
+<div className="w-full md:hidden">
           <img
             src={image}
             alt="Support"
-            className="rounded-tl-[100px] rounded-br-[100px] object-cover w-full h-auto"
+            className="md:rounded-tl-[200px] md:rounded-br-[200px] rounded-tl-[100px] rounded-br-[100px] object-cover w-full p-10 h-auto"
+          />
+        </div>
+
+      <div className="flex items-center justify-center md:px-0 px-8 md:w-1/2">
+        <div className="w-full text-center md:text-left">
+          <h2 className="text-xl sm:text-3xl md:text-3xl tracking-widest text-center font-serif text-gray-500 mb-4">
+            {title}
+          </h2>
+          <p className="text-gray-600 text-xl text-center leading-relaxed mb-6">{description}</p>
+
+          <div className="flex items-center justify-center">
+            <Link href={link}>
+            <button className="border border-pink-400 text-pink-500 px-6 py-2 rounded-xl font-medium hover:bg-pink-50 transition-all duration-200">
+              FIND OUT MORE <span className="ml-2">➤</span>
+            </button></Link>
+          </div>
+        </div>
+      </div>
+
+      {reverse && (
+        <div className="w-full md:block hidden md:w-1/2">
+          <img
+            src={image}
+            alt="Support"
+            className="rounded-tl-[200px] rounded-br-[200px] object-cover p-10 w-full h-auto"
           />
         </div>
       )}
@@ -46,8 +61,8 @@ type SupportSectionProps = {
 const Card = () => {
   return (
     <>
-     <div className="bg-white max-w-7xl md:px-20 mx-auto">
-        <h2 className="text-center text-4xl md:text-4xl  font-medium text-gray-700 mt-12">
+      <div className="bg-white pb-10 max-w-7xl md:px-20 mx-auto">
+        <h2 className="text-center text-4xl md:text-6xl  font-medium text-gray-700 mt-12">
           Someone by <span className="text-pink-500 font-signature">your</span> side
         </h2>
         <SupportSection
