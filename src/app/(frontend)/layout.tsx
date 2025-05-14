@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/LilyCare1.svg" type="image/svg+xml" />
+        <link rel="icon" href="/logo.png" type="image/svg+xml" />
       </head>
       <body>
         <Navbar />
