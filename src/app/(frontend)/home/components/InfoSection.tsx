@@ -16,7 +16,7 @@ const InfoSection = () => {
 
         {/* Button */}
         <div className="pt-6">
-          <button  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white  px-6 py-3 rounded-xl shadow-md transition">
+          <button  className="inline-flex text-base tracking-widest font-extralight items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white  px-6 py-3 rounded-xl shadow-md transition">
             <FileText className="w-5 h-5" />
             COMPLETE OUR REFERRAL FORM
           </button>

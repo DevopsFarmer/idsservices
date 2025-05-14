@@ -29,7 +29,7 @@ const PersonCentred = () => {
   return (
     <>
       <div
-        className="md:h-[800px] bg-no-repeat  bg-bottom bg-cover overflow-hidden"
+        className="md:h-[900px] bg-no-repeat  bg-bottom bg-cover overflow-hidden"
         style={{
           backgroundImage:
             "url('https://idsservices.com.au/wp-content/uploads/2023/08/aboriginal-art.png')",
@@ -42,9 +42,9 @@ const PersonCentred = () => {
                 {/* Left Side: Icon and Title */}
                 <div className="flex flex-col items-center md:items-end text-center md:text-right">
                   <img
-                    src="/image1.png" // Replace with your butterfly image path
+                    src="/LilyCare1.svg" // Replace with your butterfly image path
                     alt="butterfly"
-                    className="w-16 h-16 mb-2"
+                    className="w-[700] h-[700] mb-2"
                   />
                   <h2 className="text-2xl md:text-3xl font-serif tracking-widest text-gray-700 uppercase leading-snug">
                     {section.title}

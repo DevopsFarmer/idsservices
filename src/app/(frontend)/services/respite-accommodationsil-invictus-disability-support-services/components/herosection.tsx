@@ -39,7 +39,7 @@ const HeroSection = () => {
 
 
         {/* Left: Text */}
-        <div className="lg:w-1/2 hidden md:block text-center lg:text-left space-y-6 text-gray-700">
+        <div className="lg:w-1/2 hidden md:block text-center lg:text-center space-y-6 text-gray-700">
 
           <h1 className="text-6xl leading-[65px] font-thinker text-gray-700">
           Respite, accommodation
