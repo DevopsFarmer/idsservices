@@ -1,8 +1,6 @@
 import React from 'react'
 import HeroSection from './components/herosection'
-import InfoSection from './components/InfoSection'
 import Support from './components/PERSON-CENTRED'
-import InHomesport from './components/inHomesport'
 import Link from 'next/link'
 export default async function HomePage() {
   return (

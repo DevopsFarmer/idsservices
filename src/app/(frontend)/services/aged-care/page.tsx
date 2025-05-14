@@ -1,14 +1,12 @@
 import React from 'react'
 import HeroSection from './components/herosection'
 import InfoSection from './components/InfoSection'
-import Support from './components/PERSON-CENTRED'
 import InHomesport from './components/inHomesport'
 import Link from 'next/link'
 export default async function HomePage() {
   return (
     <>
       <HeroSection />
-
       <InfoSection />
       <InHomesport />
       <img
@@ -18,7 +16,7 @@ export default async function HomePage() {
       />
       <div className="bg-[rgb(66,73,79)] relative pb-40 py-16">
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 items-center pt-12 px-4">
-          <button className="flex items-center gap-2 bg-orange-500 text-white text-base sm:text-lg px-4 sm:px-6 py-3 sm:py-4 rounded-lg shadow-md hover:bg-orange-600 transition text-center w-full sm:w-auto">
+          <button className="flex items-center gap-2 bg-orange-500 text-white text-base sm:text-lg px-4 sm:px-6 py-3 sm:py-4 rounded-xl border shadow-md hover:bg-orange-600 transition text-center w-full sm:w-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -35,7 +33,7 @@ export default async function HomePage() {
             </svg>
             COMPLETE OUR REFERRAL FORM
           </button>
-          <button className="flex items-center gap-2 bg-orange-500 text-white text-base sm:text-lg px-4 sm:px-6 py-3 sm:py-4 rounded-lg shadow-md hover:bg-orange-600 transition text-center w-full sm:w-auto">
+          <button className="flex items-center gap-2 bg-orange-500 text-white text-base sm:text-lg px-4 sm:px-6 py-3 sm:py-4 rounded-xl border shadow-md hover:bg-orange-600 transition text-center w-full sm:w-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
