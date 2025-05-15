@@ -11,7 +11,7 @@ const PersonCentred = () => {
             "url('https://idsservices.com.au/wp-content/uploads/2023/08/aboriginal-art.png')",
         }}
       >
-        <div className=" px-6 md:px-16">
+        <div className=" px-6  md:px-16">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
             <div>
               <Image

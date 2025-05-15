@@ -1,6 +1,5 @@
 import Link from "next/link"
-import Image from "next/image"
-
+import Image from 'next/image'
 type SupportSectionProps = {
   image: string
   title: string
@@ -17,8 +16,8 @@ const SupportSection = ({ image, title, description,link, reverse = false }: Sup
           <Image
             src={image}
             alt="Support"
-            width={100}
-            height={100}
+            width={1667}
+            height={102}
             className="md:rounded-tl-[200px] md:rounded-br-[200px] rounded-tl-[100px] rounded-br-[100px] object-cover w-full p-10 h-auto"
           />
         </div>
@@ -28,8 +27,8 @@ const SupportSection = ({ image, title, description,link, reverse = false }: Sup
           <Image
             src={image}
             alt="Support"
-            width={100}
-            height={100}
+            width={1667}
+            height={102}
             className="md:rounded-tl-[200px] md:rounded-br-[200px] rounded-tl-[100px] rounded-br-[100px] object-cover w-full p-10 h-auto"
           />
         </div>
@@ -55,8 +54,8 @@ const SupportSection = ({ image, title, description,link, reverse = false }: Sup
           <Image
             src={image}
             alt="Support"
-            width={100}
-            height={100}
+            width={1667}
+            height={102}
             className="rounded-tl-[200px] rounded-br-[200px] object-cover p-10 w-full h-auto"
           />
         </div>
