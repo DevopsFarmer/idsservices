@@ -13,7 +13,7 @@ const HeroSection = () => {
     >
       <div className="max-w-7xl mx-auto flex flex-col -mb-3 bg-transparent lg:flex-row items-center">
         {/* Left: Text */}
-        <div className="lg:w-1/2 text-center space-y-6">
+        <div className="lg:w-1/2 text-center space-y-6 px-4 sm:px-6 md:px-8 py-8 sm:py-12">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
