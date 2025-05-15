@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const PersonCentred = () => {
   return (
@@ -13,10 +14,13 @@ const PersonCentred = () => {
         <div className="py-16 px-6  md:px-16">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <img
+              <Image
                 src="/about/image.png"
                 alt="Person with disability and supporter at sunset"
+                width={400}
+                height={300}
                 className="rounded-[100px_0px_100px_0px] w-[400px] object-cover shadow-md"
+                priority={true}
               />
             </div>
 
@@ -39,9 +43,6 @@ const PersonCentred = () => {
         </div>
       </div>
 
-
-
-
       <div
         className=" bg-no-repeat md:hidden  bg-bottom bg-cover overflow-hidden"
         style={{
@@ -51,9 +52,7 @@ const PersonCentred = () => {
       >
         <div className="py-16 px-6  md:px-16">
           <div className="max-w-5xl mx-auto px-10   gap-10 items-center">
-           
-
-            <div >
+            <div>
               <h2 className="text-4xl md:text-4xl  text-orange-500 tracking-wide leading-tight mb-6">
                 PERSON-CENTRED NDIS <br /> SUPPORT & CARE
               </h2>
@@ -69,10 +68,12 @@ const PersonCentred = () => {
               </p>
             </div>
 
-            <div className='flex items-center justify-center pb-20'>
-              <img
+            <div className="flex items-center justify-center pb-20">
+              <Image
                 src="/about/image.png"
                 alt="Person with disability and supporter at sunset"
+                width={400}
+                height={400}
                 className="rounded-[60px_0px_60px_0px] w-[400px] object-cover shadow-md"
               />
             </div>
