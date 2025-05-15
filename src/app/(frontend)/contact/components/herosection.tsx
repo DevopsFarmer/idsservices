@@ -7,20 +7,13 @@ import Image from 'next/image'
 const HeroSection = () => {
   return (
     <>
-      <motion.section
+      <section
         className="w-full bg-gradient-to-r overflow-hidden bg-cover bg-center text-gray-800"
         style={{ backgroundImage: "url('/bgimage.png')" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <Image
-          className="w-full rotate-180 border-t border-gray-800 h-5"
-          src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20viewBox%3D%220%200%201667%20102%22%20preserveAspectRatio%3D%22none%22%20fill%3D%22rgba%2866%2C73%2C79%2C1%29%22%3E%3Cpath%20d%3D%22M0%20102V18L14%2023H34L43%2028H70L83%2023L88%2018L110%2023L165%2038C169.13%2036.9132%20174.712%2035.4721%20180.5%2034.0232C184.719%2032.9671%20190.047%2035.9301%20194%2035C201.258%2033.2924%20206.255%2028%20208%2028C209.361%2028%20213.031%2030.7641%20215.5%2029.5C216.777%2028.8461%20216.634%2024.4"
-          alt=""
-          width={1667}
-          height={102}
-        />
         <div className="max-w-5xl mx-auto flex flex-col-reverse  -mb-3  bg-transparent lg:flex-row items-center ">
           <div className="lg:w-1/2 md:hidden text-center lg:text-left space-y-6 text-gray-700">
             <Image
@@ -78,7 +71,7 @@ const HeroSection = () => {
           width={1667}
           height={102}
         />
-      </motion.section>
+      </section>
     </>
   )
 }
