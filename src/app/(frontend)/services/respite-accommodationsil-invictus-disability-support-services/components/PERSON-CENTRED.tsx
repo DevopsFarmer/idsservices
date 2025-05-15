@@ -1,6 +1,5 @@
-import { title } from 'process'
 import React from 'react'
-
+import Image from 'next/image'
 const PersonCentred = () => {
   const data = [
     {
@@ -41,10 +40,12 @@ const PersonCentred = () => {
               <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                 {/* Left Side: Icon and Title */}
                 <div className="flex flex-col items-center md:items-end text-center md:text-right">
-                  <img
+                  <Image
                     src="/LilyCare1.svg" // Replace with your butterfly image path
                     alt="butterfly"
                     className="w-[700] h-[700] mb-2"
+                    width={700}
+                    height={700}
                   />
                   <h2 className="text-2xl md:text-3xl font-serif tracking-widest text-gray-700 uppercase leading-snug">
                     {section.title}

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 type SupportSectionProps = {
   image: string
@@ -13,18 +14,22 @@ const SupportSection = ({ image, title, description,link, reverse = false }: Sup
     <div className={`mx-auto flex flex-col p-18 md:flex-row items-center gap-10 py-12`}>
       {!reverse && (
         <div className="w-full md:block hidden md:w-1/2">
-          <img
+          <Image
             src={image}
             alt="Support"
+            width={100}
+            height={100}
             className="md:rounded-tl-[200px] md:rounded-br-[200px] rounded-tl-[100px] rounded-br-[100px] object-cover w-full p-10 h-auto"
           />
         </div>
       )}
 
 <div className="w-full md:hidden">
-          <img
+          <Image
             src={image}
             alt="Support"
+            width={100}
+            height={100}
             className="md:rounded-tl-[200px] md:rounded-br-[200px] rounded-tl-[100px] rounded-br-[100px] object-cover w-full p-10 h-auto"
           />
         </div>
@@ -47,9 +52,11 @@ const SupportSection = ({ image, title, description,link, reverse = false }: Sup
 
       {reverse && (
         <div className="w-full md:block hidden md:w-1/2">
-          <img
+          <Image
             src={image}
             alt="Support"
+            width={100}
+            height={100}
             className="rounded-tl-[200px] rounded-br-[200px] object-cover p-10 w-full h-auto"
           />
         </div>

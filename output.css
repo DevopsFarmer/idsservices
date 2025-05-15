@@ -1043,7 +1043,7 @@ video {
   border-radius: 9999px;
 }
 
-.rounded-lg {
+.rounded-xl {
   border-radius: var(--radius);
 }
 
