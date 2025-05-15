@@ -10,9 +10,7 @@ const HeroSection = () => {
       <section
         className="w-full bg-gradient-to-r overflow-hidden bg-cover bg-center text-gray-800"
         style={{ backgroundImage: "url('/bgimage.png')" }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+     
       >
         <div className="max-w-7xl mx-auto flex flex-col-reverse  -mb-3  bg-transparent lg:flex-row items-center ">
           {/* Left: Text */}

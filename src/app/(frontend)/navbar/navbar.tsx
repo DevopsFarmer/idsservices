@@ -187,20 +187,27 @@ const Navbar = () => {
                   >
                     ABOUT
                   </Link>
-                  <div className="relative inline-block text-left">
+                  <div className="relative">
                     {/* Toggle Button */}
-                    <button className="flex items-center justify-between font-bold text-lg space-x-2">
-                      <Link href="/services">
-                        {' '}
-                        <span>SERVICES</span>
+                    <div className="relative flex items-center justify-center">
+                      <Link 
+                        href="/services" 
+                        className="font-bold text-lg text-center"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setIsServicesOpen(!isServicesOpen);
+                        }}
+                      >
+                        <div className="relative pr-8">
+                          SERVICES
+                          <RiArrowDropUpLine
+                            className={`absolute right-0 top-1/2 -translate-y-1/2 text-3xl transition-transform duration-300 ${
+                              isServicesOpen ? 'rotate-180' : ''
+                            }`}
+                          />
+                        </div>
                       </Link>
-                      <RiArrowDropUpLine
-                        className={`text-3xl transition-transform duration-300 ${
-                          isServicesOpen ? 'rotate-180' : ''
-                        }`}
-                        onClick={() => setIsServicesOpen(!isServicesOpen)}
-                      />
-                    </button>
+                    </div>
 
                     {/* Dropdown Menu */}
                     <AnimatePresence>
@@ -210,7 +217,7 @@ const Navbar = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.3, ease: 'easeInOut' }}
-                          className="absolute mt-2 w-72 bg-[#F9F7E9] shadow-xl z-50 rounded-md"
+                          className="absolute mt-2 w-72 bg-[rgb(66,73,79)] text-white shadow-xl z-50 rounded-md"
                         >
                           {[
                             {
@@ -235,7 +242,7 @@ const Navbar = () => {
                             <Link
                               key={index}
                               href={service.navlink}
-                              className="block px-4 py-2 text-black text-sm hover:bg-[#FF8239] transition-all"
+                              className="block px-4 py-2 text-white text-sm hover:bg-[#FF8239] transition-all"
                               onClick={() => {
                                 setIsServicesOpen(false)
                                 setIsMenuOpen(false)
